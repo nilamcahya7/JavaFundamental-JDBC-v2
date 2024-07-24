@@ -77,5 +77,23 @@ public class ReservationDAO implements RerservationInterface {
     return 0;
   }
 
-  
+  @Override
+  public Integer delete(int id) {
+    String query = "DELETE FROM tbl_tr_transaction WHERE id = ?";
+    Reservation reservation = get(id);
+
+    if (reservation == null){
+      return 0;
+    }
+
+    try{
+      PreparedStatement preparedStatement = connection.prepareStatement(query);
+      preparedStatement.setInt(1, reservation.getId());
+      int count = preparedStatement.executeUpdate();
+      return count;
+    } catch (SQLException e){
+      e.getMessage();
+    }
+    return 0;
+  }
 }

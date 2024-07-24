@@ -8,4 +8,5 @@ public interface RerservationInterface {
   public List<Reservation> get();
   public Reservation get(int id);
   public Integer insert(Reservation reservation);
+  public Integer delete(int id);
 }
